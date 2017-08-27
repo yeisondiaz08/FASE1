@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html ng-app="myap" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Servicios</title>
+    <link href="scripts/css/icon.css" rel="stylesheet" />
+    <link href="scripts/css/materialize.css" rel="stylesheet" />
+    <link href="scripts/css/style.css" rel="stylesheet" />
+    <script src="scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="scripts/js/materialize.js"></script>
+    <script src="scripts/js/angular.js"></script>
+    <script src="scripts/ControllerAngularjs/ServiciosControllers.js"></script>
+    <script src="scripts/js/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="scripts/css/init.js"></script>
+    <script type="text/javascript">
+        var us = sessionStorage.getItem("accessToken");
+        var codigoRol = sessionStorage.getItem("rol");
+        if ((codigoRol == 1) | (codigoRol == 2)) {
+            window.sessionStorage.removeItem('accessToken');
+            window.sessionStorage.clear();
+            window.sessionStorage.removeItem('email');
+            window.location.href = 'Login.html';
+        }
+        if (us == null) {
+            window.sessionStorage.removeItem('accessToken');
+            window.sessionStorage.clear();
+            window.sessionStorage.removeItem('email');
+            window.location.href = 'Login.html';
+        }
+    </script>
+</head>
+<body ng-controller="ServiciosTrabajorController">
+    <div class="navbar-fixed">
+        <nav class="teal darken-4">
+            <div class="nav-wrapper">
+                <a id="logo-container" class="brand-logo center">ServiSolutions</a>
+                <ul id="nav-mob" class="right hide-on-med-and-down">
+                    <li><a class="dropdown-button" href="" data-activates="dropdown1"><i class="material-icons right">more_vert</i></a></li>
+                </ul>
+                <!-- Dropdown Structure -->
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a ng-click="Salir()">Salir</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li id="m2" class="bold"><a href="Cuenta.html" class="waves-effect waves-blue">Perfil</a></li>
+                    <li id="m1" class="bold"><a href="solicitudesTrabajador.html" class="waves-effect waves-blue">Solicitudes Pendientes</a></li>
+                    <li id="m1" class="bold"><a href="Servicios.html" class="waves-effect waves-blue">Registrar Servicios</a></li>
+                    <li><a ng-click="Salir()">Salir</a></li>
+                  
+                </ul>
+              
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+    <header>
+
+        <ul id="nav-mobil" class="side-nav fixed" style="width: 17%;">
+
+            <!--<div class="card teal darken-4" style="margin-top:0%">
+                <div class="card-content white-text">
+                    <img id="profile-img" src="img/portfolio/loginascustomer_profile.jpg" alt="" class="circle responsive-img valign profile-image-login" />
+                </div>
+            </div>--->
+
+            <li id="m2" class="bold"><a href="Cuenta.html" class="waves-effect waves-blue">Perfil</a></li>
+            <li id="m1" class="bold"><a href="solicitudesTrabajador.html" class="waves-effect waves-blue">Solicitudes Pendientes</a></li>
+            <li id="m1" class="bold"><a href="Servicios.html" class="waves-effect waves-blue">Registrar Servicios</a></li>
+        </ul>
+
+    </header>
+
+  
+
+    <div class="container lighten-2" style="margin-right:10%">
+        <div class="row card">
+            <div class="row center">
+                <h5 class="header col s12 red-text">Registrar Servicios</h5>
+            </div>
+            <div class="col m12 ">
+                <div class="col s12">
+                    <table class="table-striped">
+                        <thead>
+                            <tr class="morris-hover-row-label">
+                                <th width="100"><a href="" ng-click="order('Id')">Nro</a>  </th>
+                                <th width="200"><a href="" ng-click="order('Descripcion')">Nombre</a>  </th>
+                                <th class="blue-text">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="12"> <input type="text" placeholder="Servicio de Carpinteria" ng-model="search" /> </td>
+                                <td></td>
+                            </tr>
+                            <tr ng-repeat="tipTr in TipoServicios | orderBy:predicate:reverse | filter:paginate | filter:search">
+                                <td>{{tipTr.codigo}}</td>
+                                <td>{{tipTr.nombre}}</td>
+                                <td>
+                                    <input type="button" value="Seleccionar" class="btn orange" ng-click="Agregar(tipTr.codigo, tipTr.nombre)" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                   
+                    <pagination total-items="totalItems" ng-model="currentPage" max-size="5" boundary-links="true"
+                                items-per-page="numPerPage" class="pagination">
+                    </pagination> 
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html ng-app="myap" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Lista de Trabajadores</title>
+    <link href="scripts/css/icon.css" rel="stylesheet" />
+    <link href="scripts/css/materialize.css" rel="stylesheet" />
+    <link href="scripts/css/style.css" rel="stylesheet" />
+    <script src="scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="scripts/js/materialize.js"></script>
+    <script src="scripts/js/angular.js"></script>
+    <script src="scripts/css/init.js"></script>
+    <script src="scripts/ControllerAngularjs/SolicitudesAdmin.js"></script>
+    <script type="text/javascript">
+        var codigoRol = sessionStorage.getItem("rol");
+
+        if ((codigoRol == 3) || (codigoRol == 2)) {
+
+            window.sessionStorage.removeItem('accessToken');
+            window.sessionStorage.clear();
+            window.sessionStorage.removeItem('email');
+            window.location.href = 'Login.html';
+        }
+
+
+        var us = sessionStorage.getItem("accessToken");
+        if (us == null) {
+            window.sessionStorage.removeItem('accessToken');
+            window.sessionStorage.clear();
+            window.sessionStorage.removeItem('email');
+            window.location.href = 'Login.html';
+        }
+    </script>
+
+</head>
+<body ng-controller="SolicitudesController">
+
+    <div class="navbar-fixed">
+        <nav class="teal darken-4">
+            <div class="nav-wrapper">
+                <a id="logo-container" class="brand-logo center">ServiSolutions</a>
+                <ul id="nav-mob" class="right hide-on-med-and-down">
+                    <li><a class="dropdown-button" href="" data-activates="dropdown1"><i class="material-icons right">more_vert</i></a></li>
+                </ul>
+                <!-- Dropdown Structure -->
+                <ul id="dropdown1" class="dropdown-content">
+
+                    <li><a ng-click="Salir()">Salir</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li id="m1" class="bold"><a href="cuentaAdmin.html" class="waves-effect waves-blue">Perfil</a></li>
+                    <li id="m1" class="bold"><a href="usuarios.html" class="waves-effect waves-blue">Clientes Registrados</a></li>
+                    <li id="m2" class="bold"><a href="Solicitudes.html" class="waves-effect waves-blue">Solicitudes</a></li>
+                    <li id="m3" class="bold"><a href="trabajadores.html" class="waves-effect waves-blue">Trabajadores</a></li>
+                    <li><a ng-click="Salir()">Salir</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <header>
+            <ul id="nav-mobi" class="side-nav fixed" style="width: 17%;">
+
+                <!--<div class="card teal darken-4" style="margin-top:0%">
+                    <div class="card-content white-text">
+                        <img id="profile-img" src="img/portfolio/loginascustomer_profile.jpg" alt="" class="circle responsive-img valign profile-image-login" />
+                    </div>
+                </div>--->
+                <li id="m1" class="bold"><a href="cuentaAdmin.html" class="waves-effect waves-blue">Perfil</a></li>
+                <li id="m1" class="bold"><a href="usuarios.html" class="waves-effect waves-blue">Clientes Registrados</a></li>
+                <li id="m2" class="bold"><a href="Solicitudes.html" class="waves-effect waves-blue">Solicitudes</a></li>
+                <li id="m3" class="bold"><a href="trabajadores.html" class="waves-effect waves-blue">Trabajadores</a></li>
+            </ul>
+
+        </header>
+    </div>
+
+
+
+    <div class="container lighten-2" style="margin-right:10% ">
+        <div class="row card">
+            <div class="row center">
+                <h5 class="header col s12 red-text">Trabajadores Registrados</h5>
+            </div>
+            <div class="col m12 ">
+                <table class="table table-striped" style="margin-right:15%">
+                    <thead>
+                        <tr class="morris-hover-row-label">
+                            <th><a href="" ng-click="order('Id')">Id</a>  </th>
+                            <th><a href="" ng-click="order('Descripcion')">Cedula</a>  </th>
+                            <th><a href="" ng-click="order('Id')">Nombre</a>  </th>
+
+                            <th><a href="" ng-click="order('Id')">Apellido</a>  </th>
+                            <th><a href="" ng-click="order('Descripcion')">Correo</a>  </th>
+                            <th><a href="" ng-click="order('Id')">Direccion</a>  </th>
+                            <th><a href="" ng-click="order('Descripcion')">Telefono</a>  </th>
+
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                            <!--<td> <input type="text" ng-model="search.codigo" /></td>
+                            <td> <input type="text" ng-model="search.descripcion" /> </td>
+                            <td></td>-->
+
+                            <td></td>
+                        </tr>
+                        <tr ng-repeat="Sol in trabajador">
+                            <td>{{Sol.codigo}}</td>
+                            <td>{{Sol.cedula}}</td>
+                            <td>{{Sol.nombre}}</td>
+                            <td>{{Sol.apellido}}</td>
+                            <td>{{Sol.correo}}</td>
+                            <td>{{Sol.direccion}}</td>
+                            <td>{{Sol.telefono}}</td>
+                           
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html ng-app="myap" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Perfil Admin</title>
+    <link href="scripts/css/icon.css" rel="stylesheet" />
+    <link href="scripts/css/materialize.css" rel="stylesheet" />
+    <link href="scripts/css/style.css" rel="stylesheet" />
+    <script src="scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="scripts/js/materialize.js"></script>
+    <script src="scripts/js/angular.js"></script>
+    <script src="scripts/css/init.js"></script>
+    <script>
+        var us = sessionStorage.getItem("accessToken");
+        if (us == null) {
+            window.sessionStorage.removeItem('accessToken');
+            window.sessionStorage.clear();
+            window.sessionStorage.removeItem('email');
+            window.location.href = 'Login.html';
+        }
+    </script>
+    <script src="scripts/ControllerAngularjs/ClienteControllers.js"></script>
+</head>
+<body ng-controller="ClienteController">
+    <div class="row">
+        <div class="navbar-fixed">
+            <nav class="teal darken-4">
+                <div class="nav-wrapper">
+                    <a id="logo-container" class="brand-logo center">ServiSolutions</a>
+                    <ul id="nav-mob" class="right hide-on-med-and-down">
+                        <li><a class="dropdown-button" href="" data-activates="dropdown1"><i class="material-icons right">more_vert</i></a></li>
+                    </ul>
+                    <!-- Dropdown Structure -->
+                    <ul id="dropdown1" class="dropdown-content">
+
+                        <li><a ng-click="Salir()">Salir</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li id="m1" class="bold"><a href="cuentaAdmin.html" class="waves-effect waves-blue">Perfil</a></li>
+                        <li id="m1" class="bold"><a href="usuarios.html" class="waves-effect waves-blue">Clientes Registrados</a></li>
+                        <li id="m2" class="bold"><a href="Solicitudes.html" class="waves-effect waves-blue">Solicitudes</a></li>
+                        <li id="m3" class="bold"><a href="trabajadores.html" class="waves-effect waves-blue">Trabajadores</a></li>
+                        <li><a ng-click="Salir()">Salir</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+        </div>
+        <div class="row">
+            <header>
+                <ul id="nav-mobi" class="side-nav fixed" style="width: 17%;">
+
+                    <!--<div class="card teal darken-4" style="margin-top:0%">
+                    <div class="card-content white-text">
+                        <img id="profile-img" src="img/portfolio/loginascustomer_profile.jpg" alt="" class="circle responsive-img valign profile-image-login" />
+                    </div>
+                </div>--->
+                    <li id="m1" class="bold"><a href="cuentaAdmin.html" class="waves-effect waves-blue">Perfil</a></li>
+                    <li id="m1" class="bold"><a href="usuarios.html" class="waves-effect waves-blue">Clientes Registrados</a></li>
+                    <li id="m2" class="bold"><a href="Solicitudes.html" class="waves-effect waves-blue">Solicitudes</a></li>
+                    <li id="m3" class="bold"><a href="trabajadores.html" class="waves-effect waves-blue">Trabajadores</a></li>
+                </ul>
+
+            </header>
+        </div>
+
+        <div class="container lighten-2" style="margin-right:10%">
+            <div class="row card">
+                <div class="row center">
+                    <h5 class="header col s12 light">Informacion Personal</h5>
+                </div>
+                <br />
+                <div class="col m12 ">
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">account_circle</i>-->
+                        <input placeholder="" ng-model="txtNombre" id="last_name" type="text" class="validate">
+                        <label for="name">Nombre</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">account_box</i>-->
+                        <input placeholder="" type="text" ng-model="txtApellido" required>
+                        <label for="name">Apellido</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">location_on</i>-->
+                        <input placeholder="" type="text" ng-model="txtDireccion">
+                        <label for="name">Direccion</label>
+                    </div>
+                </div>
+                <div class="col m12 ">
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">mail_outline</i>-->
+                        <input placeholder="" type="email" ng-model="txtCorreo" class="validate">
+                        <label for="name">Correo</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">call</i>-->
+                        <input placeholder="" type="tel" ng-model="txtCelular" class="validate">
+                        <label for="name">Celular</label>
+                    </div>
+                    <div class="input-field col s4 browser-default" style="text-align:justify">
+                        <label for="name">Fecha de Nacimiento</label>
+                        <!--<i class="material-icons prefix">date_range</i>-->
+                        <input placeholder="" type="text" id="datepicker" ng-model="txtFecha" class="datepicker">
+                    </div>
+
+
+                </div>
+                <div class="col m12 ">
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">lock_outline</i>-->
+                        <input placeholder="" id="last_name" ng-model="txtpass" type="password" class="validate">
+                        <label for="last_name">Contraseña</label>
+                    </div>
+                    <div class="col s4 input-field">
+                        <input name="group1" type="radio" id="test1" value="Femenino" />
+                        <label class="teal-text" for="test1">Femenino</label>
+
+                        <input name="group1" type="radio" id="test2" value="Masculino" />
+                        <label class="teal-text" for="test2">Masculino</label>
+
+                    </div>
+                </div>
+                <div class="col m12 ">
+                    <div class="col s12">
+                        <div class="row center">
+                            <a ng-click="btnUpdate()" class="btn-large waves-effect waves-light deep-orange darken-3">Actualizar</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+              
+        var date = new Date();
+        var currentMonth = date.getMonth();
+        var currentDate = date.getDate();
+        var currentYear = date.getFullYear();
+        $('.datepicker').pickadate({
+            minDate: new Date(currentYear, currentMonth, currentDate),
+            dateFormat: 'yy-mm-dd'
+            //selectMonths: true, // Creates a dropdown to control month
+            //selectYears: 15
+        });
+
+        $(document).ready(function () {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+</body>
+</html>

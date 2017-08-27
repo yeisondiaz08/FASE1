@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html ng-app="myap" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Instalaciones y Mantenimiento</title>
+    <link href="scripts/css/icon.css" rel="stylesheet" />
+    <link href="scripts/css/materialize.css" rel="stylesheet" />
+    <link href="scripts/css/style.css" rel="stylesheet" />
+    <script src="scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="scripts/js/materialize.js"></script>
+    <script src="scripts/js/angular.js"></script>
+    <script src="scripts/css/init.js"></script>
+
+    <script src="scripts/ControllerAngularjs/IntalacionesControllers.js"></script>
+</head>
+<body ng-controller="SolicitudesController">
+    <div class="row">
+        <div class="navbar-fixed">
+            <nav class="teal darken-4">
+                <div ng-show="IniciarSes" class="nav-wrapper container">
+                    <a id="logo-container" href="Index.html" class="brand-logo">ServiSolutions</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#">Registrarse</a></li>
+                        <li><a href="login.html">Acceso usuarios</a></li>
+                    </ul>
+                    <ul id="nav-mobil" class="side-nav">
+                        <li><a href="#">Registrarse</a></li>
+                        <li><a href="login.html">Acceso usuarios</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobil" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+                <div ng-show="Iniciad" class="nav-wrapper container">
+                    <a id="logo-container" href="Index.html" class="brand-logo">ServiSolutions</a>
+                    <ul id="nav-mo" class="right hide-on-med-and-down">
+                        <li><a class="dropdown-button" href="" data-activates="dropdown1"><i class="material-icons right">more_vert</i></a></li>
+                    </ul>
+                    <!-- Dropdown Structure -->
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a ng-click="PaginaUsuario()">Ver Perfil</a></li>
+                        <li><a ng-click="Salir()">Salir</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a ng-click="PaginaUsuario()">Ver Perfil</a></li>
+                        <li><a ng-click="Salir()">Salir</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+
+        </div>
+
+        <!--<a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>-->
+        <!-- Modal Structure -->
+
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <br />
+                <h1 class="header center red-text">Instalaciones y Mantenimiento</h1>
+
+            </div>
+        </div>
+        <br /><br />
+        <div class="container lighten-2">
+            <div class="row card">
+                <div class="row center">
+                    <h5 class="header col s12 red-text">Solicitar Servicio</h5>
+                </div>
+                <div class="col m12 ">
+                    <div class="col s3">
+                        <label for="name">Tipo Servicio</label>
+                        <select class="browser-default" id="TipoSer">
+                            <option ng-repeat="x in TipoServicios | filter:1" value="{{x.codigo}}">{{x.nombre}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col s3 ">
+                        <!--<i class="material-icons prefix">whatshot</i>-->
+                        <label for="name">Tipo de Solicitud</label>
+                        <select ng-change="btnProgramarfecha()" ng-model="myValue" class="browser-default" id="TipoSol">
+                            <option ng-repeat="x in TipoSolici" value="{{x.codigo}}">{{x.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="col s3 ">
+                        <label for="name">Hora Estimada de Servicio</label>
+                        <!--<i class="material-icons prefix">watch</i>-->
+                        <select ng-model="txtHora" class="browser-default">
+                            <option value="1">1 Hora</option>
+                            <option value="2">2 Hora</option>
+                            <option value="3">3 Hora</option>
+                            <option value="4">4 Hora</option>
+                            <option value="5">5 Hora</option>
+                            <option value="6">6 Hora</option>
+                            <option value="7">7 Hora</option>
+                            <option value="8">8 Hora</option>
+                        </select>
+                    </div>
+                    <div class="col s3 ">
+                        <!--<i class="material-icons prefix">whatshot</i>-->
+                        <label for="name">Municipio</label>
+                        <select ng-model="myValue" class="browser-default" id="idMuni">
+                            <option ng-repeat="x in Municipios" value="{{x.codigo}}">{{x.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+                <br /><br /><br /><br />
+
+                <div class="col m12 ">
+                   
+                    <div class="input-field col s3 browser-default">
+                        <!--<i class="material-icons prefix">location_on</i>-->
+                        <input placeholder="Mz A # 2A Barcelona" ng-model="txtDireccion" type="text" class="validate">
+                        <label>Direccion</label>
+                    </div>
+                    <div ng-show="one" class="input-field col s3 browser-default" style="text-align:justify">
+                        <label for="name">Fecha</label>
+                        <!--<i class="material-icons prefix">date_range</i>-->
+                        <input type="date" ng-model="txtFecha" class="datepicker">
+                    </div>
+                    <div ng-show="two" class="col s3">
+                        <label class="input-field" for="name">Hora Programada</label>
+                        <select class="browser-default" ng-model="cbmHoraAtencion">
+                            <option value="8am a 10 am">8am a 10 am</option>
+                            <option value="10am a 12 pm">10am a 12 pm</option>
+                            <option value="12 pm a 2pm">12 pm a 2pm</option>
+                            <option value="2pm a 4pm">2pm a 4pm</option>
+                            <option value="4pm a 6pm">4pm a 6pm</option>
+                        </select>
+                    </div>
+                </div>
+               
+             
+                <br /><br /><br /><br />
+
+                <div class="col m12 ">
+                    <div class="input-field col s12">
+                        <!--<i class="material-icons prefix">mode_edit</i>-->
+                        <label for="name">Descripcion de la Solicutud</label>
+                        <textarea id="address" ng-model="txtDescripcion" class="materialize-textarea browser-default"></textarea>
+                    </div>
+                </div>
+                <div class="col m12 ">
+                    <div class="input-field col s12">
+                        <div class="row center">
+                            <a id="download-button" ng-click="btnGuardar()" class="btn-large waves-effect deep-orange darken-3">Solicitar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br /> <br />
+        <footer class="page-footer teal darken-4">
+            <div class="container">
+                <div class="row">
+                    <!--<div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+                </div>-->
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Direccion</h5>
+                        <ul>
+                            <li><a class="white-text">Mz A # 2A Barcelona</a></li>
+                            <li><a class="white-text">Valledupar</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Telefonos</h5>
+                        <ul>
+                            <li><a class="white-text">Tel: 5724580</a></li>
+                            <li><a class="white-text">Cel: 3014899599</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Contactos</h5>
+                        <ul>
+                            <li><a class="white-text">servisolutionsvalledupar@gmail.com</a></li>
+                            <li><a class="white-text">yeison@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Redes Sociales</h5>
+                        <ul>
+                            <li>
+
+                                <a href="https://www.facebook.com/" target="_blank"><img alt="siguenos en facebook" height="32" src="images/face.png" title="siguenos en facebook" width="32" /></a>
+                                <a href="https://twitter.com/" target="_blank"><img alt="siguenos en Twitter" height="32" src="images/Twitter.png" title="siguenos en Twitter" width="32" /></a>
+                                <a href="https://www.youtube.com/" target="_blank"><img alt="Canal de youtube" height="32" src="images/YouTube.png" title="Canal de youtube" width="32" /></a>
+                                <a href="https://www.instagram.com/" target="_blank"><img alt="sígueme en Instagram" height="32" src="images/Instagram.png" title="sígueme en Instagram" width="32" /></a>
+                                <!--<a href="URL-Google+" target="_blank"><img alt="siguenos en Google+" height="32" src="images/googlee.png" title="siguenos en Google+" width="32" /></a>-->
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="footer-copyright">
+            <div class="container">
+                Made by <a class="orange-text text-lighten-3" href="#">Materialize</a>
+            </div>
+        </div>-->
+        </footer>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+        var today = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1);
+
+        //$("#datepicker").pickadate({
+        //    showOn: "none",
+        //    minDate: tomorrow,
+        //    dateFormat: "DD dd-mm-yy",
+        //    onSelect: function (dateText) {
+        //        minDateChange;
+        //    },
+        //    inputOffsetX: 5,
+
+        //});
+        $('.datepicker').pickadate({
+
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15
+        });
+
+        $(document).ready(function () {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+</body>
+</html>

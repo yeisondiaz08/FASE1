@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html ng-app="myap" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Informacion Personal</title>
+    <link href="scripts/css/icon.css" rel="stylesheet" />
+    <link href="scripts/css/materialize.css" rel="stylesheet" />
+    <link href="scripts/css/style.css" rel="stylesheet" />
+    <script src="scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="scripts/js/materialize.js"></script>
+    <script src="scripts/js/angular.js"></script>
+    <script src="scripts/css/init.js"></script>
+    <script>
+        var us = sessionStorage.getItem("accessToken");
+        if (us == null) {
+            window.sessionStorage.removeItem('accessToken');
+            window.sessionStorage.clear();
+       
+            window.sessionStorage.removeItem('email');
+            window.location.href = 'Login.html';
+
+        }
+    </script>
+    <script src="scripts/ControllerAngularjs/Cuenta.js"></script>
+  <script>
+      $(document).ready(function () {
+          $('.collapsible').collapsible({
+              accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+          });
+      });
+  </script>
+</head>
+<body ng-controller="CuentaController">
+    <div class="navbar-fixed">
+        <nav class="teal darken-4">
+            <div class="nav-wrapper">
+                <a id="logo-container" class="brand-logo center">ServiSolutions</a>
+                <ul id="nav-mob" class="right hide-on-med-and-down">
+                    <li><a class="dropdown-button" href="" data-activates="dropdown1"><i class="material-icons right">more_vert</i></a></li>
+                </ul>
+                <!-- Dropdown Structure -->
+                <ul id="dropdown1" class="dropdown-content">
+
+                    <li><a ng-click="Salir()">Salir</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li id="m2" class="bold"><a href="Cuenta.html" class="waves-effect waves-blue">Perfil</a></li>
+                    <li id="m1" class="bold"><a href="solicitudesTrabajador.html" class="waves-effect waves-blue">Solicitudes Pendientes</a></li>
+                    <li id="m1" class="bold"><a href="Servicios.html" class="waves-effect waves-blue">Registrar Servicios</a></li>
+                    <li><a ng-click="Salir()">Salir</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <header>
+          
+            <ul id="nav-mobi" class="side-nav fixed" style="width: 17%;">
+
+                <!--<div class="card teal darken-4" style="margin-top:0%">
+                    <div class="card-content white-text">
+                        <img id="profile-img" src="img/portfolio/loginascustomer_profile.jpg" alt="" class="circle responsive-img valign profile-image-login" />
+                    </div>
+                </div>-->
+                <li id="m2" class="bold"><a href="Cuenta.html" class="waves-effect waves-blue">Perfil</a></li>
+                <li id="m1" class="bold"><a href="solicitudesTrabajador.html" class="waves-effect waves-blue">Solicitudes Pendientes</a></li>
+                <li id="m1" class="bold"><a href="Servicios.html" class="waves-effect waves-blue">Registrar Servicios</a></li>
+            </ul>
+
+        </header>
+        <div class="container lighten-2" style="margin-right:10%">
+            <div class="row card">
+                <div class="row center">
+                    <h5 class="header col s12 light">Informacion Personal</h5>
+                </div>
+                <br />
+                <div class="col m12 ">
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">account_circle</i>-->
+                        <input ng-model="txtNombre" placeholder="" id="last_name" type="text" class="validate">
+                        <label for="name">Nombre</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">account_box</i>-->
+                        <input type="text" placeholder="" ng-model="txtApellido" class="validate">
+                        <label for="name">Apellido</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">location_on</i>-->
+                        <input type="text" placeholder="" ng-model="txtCedula">
+                        <label for="name">Cedula</label>
+                    </div>
+                   
+                </div>
+                <div class="col m12 ">
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">location_on</i>-->
+                        <input type="text" placeholder="" ng-model="txtDireccion">
+                        <label for="name">Direccion</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">mail_outline</i>-->
+                        <input placeholder="" type="email" ng-model="txtCorreo" class="validate">
+                        <label>Correo</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">call</i>-->
+                        <input type="tel" placeholder="" ng-model="txtCelular" class="validate">
+                        <label for="name">Celular</label>
+                    </div>
+                   
+                </div>
+                <div class="col m12 ">
+                    <div class="input-field col s4 browser-default" style="text-align:justify">
+                        <label for="name">Fecha de Nacimiento</label>
+                        <!--<i class="material-icons prefix">date_range</i>-->
+                        <input placeholder="" type="date" ng-model="txtFecha" class="datepicker">
+                    </div>
+                    <div class="input-field col s4">
+                        <!--<i class="material-icons prefix">lock_outline</i>-->
+                        <input placeholder="" id="last_name" ng-model="txtpass" type="password" class="validate">
+                        <label for="last_name">Password</label>
+                    </div>
+                    <div class="col s4 input-field">
+                        <input name="group1" type="radio" id="test1" value="Femenino" />
+                        <label class="teal-text" for="test1">Femenino</label>
+
+                        <input name="group1" type="radio" id="test2" value="Masculino" />
+                        <label class="teal-text" for="test2">Masculino</label>
+
+                    </div>
+                </div>
+                <div class="col m12 ">
+                    <div class="input-field col s12">
+                        <!--<i class="material-icons prefix">mode_edit</i>-->
+                        <label for="name">Descripcion Personal</label>
+                        <textarea placeholder="" id="address" ng-model="txtDescripcion" class="materialize-textarea browser-default"></textarea>
+                    </div>
+                </div>
+                <div class="col m12 ">
+                    <div class="col s12">
+                        <div class="row center">
+                            <a ng-click="btnUpdate()" class="btn-large waves-effect waves-light deep-orange darken-3">Actualizar</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+        var today = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1);
+
+        //$("#datepicker").pickadate({
+        //    showOn: "none",
+        //    minDate: tomorrow,
+        //    dateFormat: "DD dd-mm-yy",
+        //    onSelect: function (dateText) {
+        //        minDateChange;
+        //    },
+        //    inputOffsetX: 5,
+
+        //});
+        $('.datepicker').pickadate({
+
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15
+        });
+
+        $(document).ready(function () {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+</body>
+</html>

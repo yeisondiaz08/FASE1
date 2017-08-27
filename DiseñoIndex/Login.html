@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Iniciar Sesion</title>
+    <link href="scripts/css/icon.css" rel="stylesheet" />
+    <link href="scripts/css/materialize.css" rel="stylesheet" />
+    <link href="scripts/css/style.css" rel="stylesheet" />
+    <script src="scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="scripts/js/materialize.js"></script>
+    <script src="scripts/js/angular.js"></script>
+    <script src="scripts/js/angular-resource.js"></script>
+    <script src="scripts/css/init.js"></script>
+   <script type="text/javascript">
+       window.sessionStorage.removeItem('accessToken');
+       window.sessionStorage.removeItem('email');
+       window.sessionStorage.removeItem('rol');
+       window.sessionStorage.removeItem('codUsuario');
+       window.sessionStorage.clear();
+   </script>
+    <script src="scripts/ControllerAngularjs/Login.js"></script>
+</head>
+<body ng-app="myap" ng-controller="LoginController">
+
+    <div class="navbar-fixed">
+        <nav class="teal darken-4">
+            <div class="nav-wrapper container">
+                <a href="index.html" class="brand-logo">ServiSolutions</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="Registrarse.html">Registrarse</a></li>
+                    <li><a href="Login.html">Acceso usuarios</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="Registrarse.html">Registrarse</a></li>
+                    <li><a href="Login.html">Acceso usuarios</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+
+    <!--<a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>-->
+    <!-- Modal Structure -->
+    
+
+
+    <div class="container lighten-2" style="margin:5% auto; max-width:500px;">
+
+        <div class="card-panel">
+            <div class="row center">
+                <h1 class="header col s12 light">ServiSolutions</h1>
+            </div>
+            <div class="input-field col s12">
+                <div class="input-field col l12">
+
+                    <input ng-model="userLoginEmail" id="nn" type="email" class="validate">
+                    <label for="last_name">Correo</label>
+                </div>
+            </div>
+            <br />
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input ng-model="userLoginPassword" id="lst" type="password" class="validate caja-texto">
+                    <label for="last_name">Contraseña</label>
+                </div>
+            </div>
+           
+
+            <div class="col m12 ">
+                <div class="col s12">
+                    <div class="row center">
+                        <a id="download-button" ng-click="btnLogin()" class="btn-large waves-effect deep-orange darken-3">Iniciar Sesion</a>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <div class="col s12 center">
+                <h6><a class="teal-text" href="Registrarse.html">Registrarse</a></h6>
+            </div>
+            <div ng-hide="message==''">
+                <div class="row center red-text">
+                    {{message}}
+                </div>
+            </div>
+            <div class="col m12 ">
+                <div class="input-field col s12">
+                    <div class="row center">
+                        <div ng-show="tow" class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <script>
+        $(document).ready(function () {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+</body>
+</html>

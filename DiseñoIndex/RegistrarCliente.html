@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Registrar Cliente</title>
+    <link href="scripts/css/icon.css" rel="stylesheet" />
+    <link href="scripts/css/materialize.css" rel="stylesheet" />
+    <link href="scripts/css/style.css" rel="stylesheet" />
+    <script src="scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="scripts/js/materialize.js"></script>
+    <script src="scripts/js/angular.js"></script>
+    <script src="scripts/css/init.js"></script>
+    <script src="scripts/ControllerAngularjs/Registrarse.js"></script>
+</head>
+<body ng-app="myapp" ng-controller="RegistrarseController">
+    <div class="navbar-fixed">
+        <nav class="teal darken-4">
+            <div class="nav-wrapper container">
+                <a href="index.html" class="brand-logo">ServiSolutions</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="Registrarse.html">Registrarse</a></li>
+                    <li><a href="Login.html">Acceso usuarios</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+
+                    <li><a href="Registrarse.html">Registrarse</a></li>
+                    <li><a href="Login.html">Acceso usuarios</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br />
+            <h1 class="header center red-text">Registrarse</h1>
+        </div>
+    </div>
+
+    <div class="container lighten-2">
+        <div class="row card">
+            <br />
+            <div class="col m12 ">
+                <div class="input-field col s4">
+                    <!--<i class="material-icons prefix">account_circle</i>-->
+                    <input ng-model="txtNombre" id="last_name" type="text" class="validate">
+                    <label for="name">Nombre</label>
+                </div>
+                <div class="input-field col s4">
+                    <!--<i class="material-icons prefix">account_box</i>-->
+                    <input type="text" ng-model="txtApellido" required>
+                    <label for="name">Apellido</label>
+                </div>
+                <div class="input-field col s4">
+                    <!--<i class="material-icons prefix">location_on</i>-->
+                    <input type="text" ng-model="txtDireccion">
+                    <label for="name">Direccion</label>
+                </div>
+            </div>
+            <div class="col m12 ">
+                <div class="input-field col s4">
+                    <!--<i class="material-icons prefix">mail_outline</i>-->
+                    <input type="email" ng-model="txtCorreo" class="validate">
+                    <label for="name">Correo</label>
+                </div>
+                <div class="input-field col s4">
+                    <!--<i class="material-icons prefix">call</i>-->
+                    <input type="tel" ng-model="txtCelular" class="validate">
+                    <label for="name">Celular</label>
+                </div>
+                <div class="input-field col s4 browser-default" style="text-align:justify">
+                    <label for="name">Fecha de Nacimiento</label>
+                    <!--<i class="material-icons prefix">date_range</i>-->
+                    <input type="date" ng-model="txtFecha" class="datepicker">
+                </div>
+                
+               
+            </div>
+            <div class="col m12 ">
+                <div class="input-field col s4">
+                    <!--<i class="material-icons prefix">lock_outline</i>-->
+                    <input id="last_name" ng-model="contra1" type="password" class="validate">
+                    <label for="last_name">Contraseña</label>
+                </div>
+                <div class="col s4 input-field">
+                        <input name="group1" type="radio" id="test1" value="Femenino" />
+                        <label class="teal-text" for="test1">Femenino</label>
+                  
+                        <input name="group1" type="radio" id="test2" value="Masculino" />
+                        <label class="teal-text" for="test2">Masculino</label>
+                  
+                </div>
+            </div>
+            <div class="col m12 center">
+                <div class="input-field col s12">
+                    <input name="condiciones" type="checkbox" value="cc" class="filled-in" id="filled-in-box" />
+
+                    <label for="filled-in-box">
+                        He leído y acepto las <a class="blue-text" href="#">Condiciones Generales</a>
+                        de uso y la <a class="blue-text" href="#">Política de Privacidad</a>
+                    </label>
+                </div>
+            </div>
+  
+            <div class="col m12 ">
+                <div class="input-field col s12">
+                    <div class="row center">
+                        <br />
+                        <a ng-click="AddCliente()" class="btn-large waves-effect deep-orange darken-3">Registrarse</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+        var today = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1);
+
+        //$("#datepicker").pickadate({
+        //    showOn: "none",
+        //    minDate: tomorrow,
+        //    dateFormat: "DD dd-mm-yy",
+        //    onSelect: function (dateText) {
+        //        minDateChange;
+        //    },
+        //    inputOffsetX: 5,
+
+        //});
+        $('.datepicker').pickadate({
+
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15
+        });
+
+        $(document).ready(function () {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+</body>
+</html>

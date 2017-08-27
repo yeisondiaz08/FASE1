@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html ng-app="myap" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="scripts/css/icon.css" rel="stylesheet" />
+    <link href="scripts/css/materialize.css" rel="stylesheet" />
+    <link href="scripts/css/style.css" rel="stylesheet" />
+    <script src="scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="scripts/js/materialize.js"></script>
+    <script src="scripts/js/angular.js"></script>
+    <script src="scripts/css/init.js"></script>
+    <script type="text/javascript">
+        var us = sessionStorage.getItem("accessToken");
+       
+        if (us != null) {
+           
+            window.location.href = 'Default.html';
+        }
+    </script>
+    <script src="scripts/ControllerAngularjs/Solicitudes.js"></script>
+   
+</head>
+<body ng-controller="SolicitudesController">
+    <div class="row">
+        <div class="navbar-fixed">
+            <nav class="teal darken-4">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="Index.html" class="brand-logo">ServiSolutions</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="Registrarse.html">Registrarse</a></li>
+                        <li><a href="login.html">Acceso usuarios</a></li>
+                    </ul>
+                    <ul id="nav-mobil" class="side-nav">
+                        <li><a href="Registrarse.html">Registrarse</a></li>
+                        <li><a href="login.html">Acceso usuarios</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobil" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+              
+            </nav>
+           
+        </div>
+      
+        <div class="slider">
+
+            <ul class="slides">
+                <li>
+                    <img src="Images/herramienta.jpg" /> <!-- random image -->
+                    <div class="caption left-align">
+                        <h3> <strong>Reparaciones y Mantenimiento</strong></h3>
+                        <h5 class="light grey-text text-lighten-3"></h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="Images/serviciospersonales.jpg" /><!-- random image -->
+                    <div class="caption left-align">
+                        <h3><strong>Asistencia Personal</strong></h3>
+
+                    </div>
+                </li>
+                <li>
+                    <img class="responsive-img" src="Images/servicios.jpg" /> <!-- random image -->
+                    <div class="caption right-align">
+                        <h3><strong>Servicios Generales</strong> </h3>
+
+                    </div>
+                </li>
+                <li>
+                    <img class="responsive-img" src="Images/profesionales.jpg" /><!-- random image -->
+                    <div class="caption left-align">
+                        <h3> <strong>Servicios Especializados</strong></h3>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <br />
+        <div class="col m12 grey lighten-3">
+            <div class="card center">
+                <div class="col m3">
+
+                    <br />
+                    <img src="Images/usuario.png" />
+                    <p class="black-text">
+                       Profesionales calificados.
+                    </p>
+
+
+                </div>
+                <div class="col m3">
+
+                    <br />
+                    <img src="Images/martillo.png" />
+                    <p class="black-text">
+                      Herramientas de alta tecnologia.
+                    </p>
+
+                </div>
+                <div class="col m3">
+
+                    <br />
+                    <img src="Images/certificado.png" />
+                    <p class="black-text">
+                       4 meses de garantia.
+                    </p>
+
+                </div>
+                <div class="col m3">
+
+                    <br />
+                    <img src="Images/precio.png" />
+                    <p class="black-text">
+                        Precios Competitivos, con muntiples opciones de pago.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+        <br /> <br /> <br /><br /> <br /> <br /><br /> <br /> <br />
+        <div class="container">
+            <div class="section">
+                <!--   Icon Section   -->
+                <div class="row">
+                    <div class="col s12 m3">
+                        <div class="card hoverable">
+                            <div class="card-image">
+                                <a href="InstalacionesMantenimiento.html">
+                                    <img class="activator circle-clipper" src="Images/Instalaciones.jpg" />
+                                </a>
+                            </div>
+                            <div class="card-content center">
+                                <h5><a class="teal-text" href="InstalacionesMantenimiento.html">Instalaciones <br />Mantenimiento</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m3">
+                        <div class="card hoverable">
+                            <div class="card-image">
+                                <a href="ServiciosGenerales.html">
+                                    <img class="activator" src="Images/serviciosGeneral.jpg" />
+                                </a>
+                            </div>
+
+                            <div class="card-content center">
+                                <h5><a class="teal-text" href="ServiciosGenerales.html">Servicios <br /> Generales</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m3">
+                        <div class="card hoverable">
+                            <div class="card-image">
+                                <a href="AsistenciaPersonal.html">
+                                    <img class="activator" src="Images/Asistencia.jpg" />
+                                </a>
+                            </div>
+
+                            <div class="card-content center">
+                                <h5><a class="teal-text" href="AsistenciaPersonal.html">Asistencia <br /> Personal</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m3">
+                        <div class="card hoverable">
+                            <div class="card-image">
+                                <a href="ServiciosEspecializados.html">
+                                    <img class="activator" src="Images/serviciosEspecializados.jpg" />
+                                </a>
+
+                            </div>
+                            <div class="card-content center">
+                                <h5><a class="teal-text" href="ServiciosEspecializados.html">Servicios <br />Especializados</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+        <!--<div class="col m12  grey lighten-3 center">
+          
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.230334630779!2d-73.28243968566521!3d10.482500167417564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8ab77f6d85b8eb%3A0x75cc901f226eb458!2sCra.+38+%234-42%2C+Valledupar%2C+Cesar%2C+Colombia!5e0!3m2!1ses!2sin!4v1466523893234" width="1750" height="282" frameborder="0" style="border:0" allowfullscreen></iframe>
+   
+        </div>-->
+    
+        <footer class="page-footer teal darken-4">
+            <div class="container">
+                <div class="row">
+                    <!--<div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+                </div>-->
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Direccion</h5>
+                        <ul>
+                            <li><a class="white-text">Mz A # 2A Barcelona</a></li>
+                            <li><a class="white-text">Valledupar</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Telefonos</h5>
+                        <ul>
+                            <li><a class="white-text">Tel: 5724580</a></li>
+                            <li><a class="white-text">Cel: 3014899599</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Contactos</h5>
+                        <ul>
+                            <li><a class="white-text">servisolutionsvalledupar@gmail.com</a></li>
+                            <li><a class="white-text">yeison@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Redes Sociales</h5>
+                        <ul>
+                            <li>
+
+                                <a href="https://www.facebook.com/" target="_blank"><img alt="siguenos en facebook" height="32" src="images/face.png" title="siguenos en facebook" width="32" /></a>
+                                <a href="https://twitter.com/" target="_blank"><img alt="siguenos en Twitter" height="32" src="images/Twitter.png" title="siguenos en Twitter" width="32" /></a>
+                                <a href="https://www.youtube.com/" target="_blank"><img alt="Canal de youtube" height="32" src="images/YouTube.png" title="Canal de youtube" width="32" /></a>
+                                <a href="https://www.instagram.com/" target="_blank"><img alt="sígueme en Instagram" height="32" src="images/Instagram.png" title="sígueme en Instagram" width="32" /></a>
+                                <!--<a href="URL-Google+" target="_blank"><img alt="siguenos en Google+" height="32" src="images/googlee.png" title="siguenos en Google+" width="32" /></a>-->
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="footer-copyright">
+            <div class="container">
+                Made by <a class="orange-text text-lighten-3" href="#">Materialize</a>
+            </div>
+        </div>-->
+        </footer>
+    </div>
+
+
+    <script>
+
+        $(document).ready(function () {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+        $(document).ready(function () {
+            $('.slider').slider();
+        });
+    </script>
+</body>
+</html>
